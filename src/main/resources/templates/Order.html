@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><!--get the thymeleaf templates-->
+<head>
+    <meta charset="UTF-8">
+    <title>Order List</title>
+</head>
+<body>
+
+<table border="1" align="center">
+    <!--the head of information table-->
+    <tr>
+        <th>订单编号</th>
+        <th>商品编号</th>
+        <th>商品单价</th>
+        <th>购买数量</th>
+        <th>总价</th>
+        <th>下单时间</th>
+        <th>查看详情</th>
+        <th>删除</th>
+    </tr>
+    <tr th:each=" orderBean:${orderList}" style="background:#efefef;">
+        <td th:text="${orderBean.orderID}"></td>
+        <td th:text="${orderBean.itemID}"></td>
+        <td th:text="${orderBean.itemPrice}"></td>
+        <td th:text="${orderBean.itemNumber}"></td>
+        <td th:text="${orderBean.totalCost}"></td>
+        <td th:text="${orderBean.date}"></td>
+        <td>
+            <a th:href=" '/OrderDetailed?orderID='+${orderBean.orderID}">
+                <button>详情</button>
+            </a>
+        </td>
+        <!--td >
+            <a th:href="'/deleteUser?userToBeDeleted='+${Result.Name}">
+                <button>删除(不可用）</button>
+            </a>
+        </td-->
+
+    </tr>
+
+</table>
+</body>
+
+
+</html>

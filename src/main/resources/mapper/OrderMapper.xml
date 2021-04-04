@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.OrderManagement.test.mapper.OrderMapper">
+
+    <resultMap id="OrderMap" type="com.OrderManagement.test.entity.OrderBean" autoMapping="true">
+        <id column="order_id" property="orderID"/>
+        <result column="user_id" property="userID"/>
+        <result column="goods_id" property="itemID"/>
+        <result column="goods_number" property="itemNumber"/>
+        <result column="order_date" property="date"/>
+        <result column="order_status" property="status"/>
+        <result column="goods_price" property="itemPrice"/>
+    </resultMap>
+
+    <resultMap id="OrderDetailMap" type="com.OrderManagement.test.entity.OrderBean" autoMapping="true">
+        <id column="order_id" property="orderID"/>
+        <result column="user_id" property="userID"/>
+        <result column="goods_id" property="itemID"/>
+        <result column="goods_number" property="itemNumber"/>
+        <result column="order_date" property="date"/>
+        <result column="order_status" property="status"/>
+        <result column="goods_price" property="itemPrice"/>
+        <result column="goods_image" property="imageURL"/>
+    </resultMap>
+
+    <resultMap id="LogisticsMap" type="com.OrderManagement.test.entity.LogisticsBean">
+
+    </resultMap>
+
+    <select id="showOrderList" resultMap="OrderMap" resultType="java.util.List">
+        select *
+        from orders
+        where orders.user_id =  #{userID}
+    </select>
+    
+    <select id="showOrderDetails" resultMap="OrderDetailMap" resultType="com.OrderManagement.test.entity.OrderBean">
+        select *
+        from orders
+        left join goods
+        on orders.goods_id  = goods.goods_id
+        where orders.order_id = #{orderID};
+    </select>
+    
+    <insert id="createOrder" >
+        insert into orders
+        (user_id,goods_id,goods_number,order_date,order_status,delivery_id,goods_price)
+        values
+        (#{userID},#{itemID},#{num},now(),1,233,#{price})
+    </insert>
+
+</mapper>

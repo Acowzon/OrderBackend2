@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><!--get the thymeleaf templates-->
+<head>
+    <meta charset="UTF-8">
+    <title>Order details</title>
+</head>
+<body>
+    <div style="height: 55px;" class="headerFont">订单详情</div>
+
+    <div style="height: 40px;">
+    <a href="/goToRecognize"><button >返回首页</button></a>
+        <a href="/goToLabelList"><button>返回订单列表</button></a>
+        <a href="/goSample"><button>账户信息</button></a>
+    </div>
+
+    <div align=" center">
+        <div></div>
+        <p th:text="${orderDetailBean.orderID}">订单编号</p>
+        <p th:text="${orderDetailBean.userID}">客户ID</p>
+        <p th:text="${orderDetailBean.itemID}">商品编号</p>
+        <p th:text="${orderDetailBean.itemNumber}">购买信息</p>
+        <p th:text="${orderDetailBean.date}">下单时间</p>
+        <p th:text="${orderDetailBean.itemPrice}">商品单价</p>
+        <p th:text="${orderDetailBean.imageURL}">图片</p>
+    </div>
+
+</body>
+
+
+</html>

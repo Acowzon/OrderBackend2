@@ -1,0 +1,23 @@
+
+spring:
+
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    enabled: true
+    mode: HTML5
+    encoding: UTF-8
+
+  datasource:
+    name: Aoxzon
+    url: jdbc:mysql://server.moeworkshop.com:3306/Aoxzon?useUnicode=true&useJDBCCompliantTimezoneShift=true&serverTimezone=UTC&characterEncoding=utf8
+    username: AoxzonDev
+    password: 1qaz2wsx
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+mybatis:
+
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.OrderManagement.test.Bean
